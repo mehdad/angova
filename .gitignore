@@ -1,3 +1,4 @@
 /webapp/node_modules
 /platforms
-/webapp/bower_components
+/webapp/app/lib
+/webapp/.tmp
