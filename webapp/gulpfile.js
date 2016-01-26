@@ -199,4 +199,4 @@ gulp.task('build', ['clean:dist'], function () {
   runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build']);
 });
 
-gulp.task('default', ['build']);
+gulp.task('default', ['serve']);
