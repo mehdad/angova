@@ -16,7 +16,7 @@ var yeoman = {
 
 var paths = {
   scripts: [yeoman.app + '/scripts/**/*.js'],
-  styles: [yeoman.app + '/styles/**/*.scss'],
+  styles: [yeoman.app + '/styles/**/*.css',yeoman.app + '/lib/**/*.css'],
   test: ['test/spec/**/*.js'],
   testRequire: [
     yeoman.app + '/bower_components/angular/angular.js',
@@ -44,10 +44,6 @@ var lintScripts = lazypipe()
   .pipe($.jshint.reporter, 'jshint-stylish');
 
 var styles = lazypipe()
-  .pipe($.sass, {
-    outputStyle: 'expanded',
-    precision: 10
-  })
   .pipe($.autoprefixer, 'last 1 version')
   .pipe(gulp.dest, '.tmp/styles');
 
@@ -151,7 +147,7 @@ gulp.task('bower', function () {
 ///////////
 
 gulp.task('clean:dist', function (cb) {
-  rimraf('./dist', cb);
+  rimraf('../www', cb);
 });
 
 gulp.task('client:build', ['html', 'styles'], function () {
