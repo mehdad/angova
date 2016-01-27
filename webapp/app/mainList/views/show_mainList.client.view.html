@@ -1,0 +1,15 @@
+<section data-ng-controller="MainListController" data-ng-init="find()">
+	<h1>Ads</h1>
+	<ul>
+		<li data-ng-repeat="ad in ads">
+			<a data-ng-href="#!/mainList/{{ad.id}}" data-ng-bind="ad.title"></a>
+			<br>
+			<small data-ng-bind="ad.cellPhone"></small>
+			<small>/</small>
+			<small data-ng-bind="ad.firstName"></small>
+			<p data-ng-bind="ad.lastName"></p>
+		</li>
+	</ul>
+	<div data-ng-hide="!ads || ads.length">
+		No Ad yet, why don't you <a href="/#!/mainList/create">create one</a>? </div>
+</section>
