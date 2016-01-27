@@ -4,22 +4,23 @@
  * @ngdoc overview
  * @name webappApp
  * @description
- * # webappApp
+ * # RS_webApp
  *
  * Main module of the application.
  */
 angular
-  .module('webappApp', [
+  .module('RS_webApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'mainList'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/sdf', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
@@ -32,4 +33,8 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  });
+
+  angular.element(document).ready(function(){
+  	angular.bootstrap(document, ['RS_webApp']);
   });
