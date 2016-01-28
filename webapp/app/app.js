@@ -8,8 +8,7 @@
  *
  * Main module of the application.
  */
-angular
-  .module('RS_webApp', [
+angular.module('RS_webApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
