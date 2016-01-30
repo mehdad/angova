@@ -17,16 +17,23 @@ var yeoman = {
 var paths = {
   scripts: [yeoman.app + '/scripts/**/*.js'],
   styles: [yeoman.app + '/styles/**/*.css',yeoman.app + '/lib/**/*.css'],
-  test: ['test/spec/**/*.js'],
+  test: [yeoman.app + '/*[!lib]*/tests/unit/*.js'],
   testRequire: [
-    yeoman.app + '/bower_components/angular/angular.js',
-    yeoman.app + '/bower_components/angular-mocks/angular-mocks.js',
-    yeoman.app + '/bower_components/angular-resource/angular-resource.js',
-    yeoman.app + '/bower_components/angular-cookies/angular-cookies.js',
-    yeoman.app + '/bower_components/angular-sanitize/angular-sanitize.js',
-    yeoman.app + '/bower_components/angular-route/angular-route.js',
-    'test/mock/**/*.js',
-    'test/spec/**/*.js'
+    yeoman.app + '/lib/angular/angular.js',
+    yeoman.app + '/lib/angular-mocks/angular-mocks.js',
+    yeoman.app + '/lib/angular-animate/angular-animate.js',
+    yeoman.app + '/lib/angular-cookies/angular-cookies.js',
+    yeoman.app + '/lib/angular-route/angular-route.js',
+    yeoman.app + '/lib/angular-resource/angular-resource.js',
+    yeoman.app + '/lib/angular-touch/angular-touch.js',
+    yeoman.app + '/lib/angular-sanitize/angular-sanitize.js',
+    yeoman.app + '/app.js',
+    yeoman.app + '/*[!lib]*/**/*.js',
+    yeoman.app + '/*[!lib]*/**/controller/*.js',
+    yeoman.app + '/*[!lib]*/**/service/*.js',
+    yeoman.app + '/*[!lib]*/**/controller/*.js',
+    yeoman.app + '/*[!lib]*/**/config/*.js',
+    yeoman.app + '/*[!lib]*/tests/unit/*.js'
   ],
   karma: 'karma.conf.js',
   views: {
@@ -136,7 +143,7 @@ gulp.task('test', ['start:server:test'], function () {
 gulp.task('bower', function () {
   return gulp.src(paths.views.main)
     .pipe(wiredep({
-      directory: yeoman.app + '/bower_components',
+      directory: yeoman.app + '/app/lib',
       ignorePath: '..'
     }))
   .pipe(gulp.dest(yeoman.app + '/views'));
