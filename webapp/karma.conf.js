@@ -1,6 +1,9 @@
 module.exports = function(config) {
   config.set({
-    frameworks: ['jasmine'],
+    frameworks: [
+        'jasmine',
+        'jasmine-matchers'
+    ],
     files : [
       // include relevant Angular files and libs
       'app/lib/angular/angular.js',
