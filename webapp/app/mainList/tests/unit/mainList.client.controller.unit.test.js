@@ -32,10 +32,16 @@ describe('Controllers ::', function() {
       });
     }));
 
-    // markAll
     it('should have a find all function', function() {
       expect(scope.find).toBeDefined();
     });
+
+    describe('Find All function specefics', function () {
+        it('should return an array',function () {
+            scope.find();
+            expect(scope.ads).toBeArray();
+        })
+    })
 
   });
 });
