@@ -1,0 +1,12 @@
+<section data-ng-controller="UserController" data-ng-init="find()">
+	<h1>Users</h1>
+	<ul>
+		<li data-ng-repeat="user in users">
+			<a data-ng-href="#!/user/{{user.uniqueid}}" data-ng-bind="user.name"></a>
+			<br>
+			<small data-ng-bind="user.uniqueid"></small>
+		</li>
+	</ul>
+	<div data-ng-hide="!users || users.length">
+		Not a member?</br> <a href="/#!/users/create">Join Us</a>? </div>
+</section>
