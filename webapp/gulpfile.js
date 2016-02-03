@@ -15,8 +15,8 @@ var yeoman = {
 };
 
 var paths = {
-  scripts: [yeoman.app + '/scripts/**/*.js'],
-  styles: [yeoman.app + '/styles/**/*.css',yeoman.app + '/lib/**/*.css'],
+  scripts: [yeoman.app + '/*[!lib]*/*/*.js'],
+  styles: [yeoman.app + '/asset/styles/*.css',yeoman.app + '/lib/**/*.css'],
   test: [yeoman.app + '/*[!lib]*/tests/unit/*.js'],
   testRequire: [
     yeoman.app + '/lib/angular/angular.js',
@@ -38,7 +38,7 @@ var paths = {
   karma: 'karma.conf.js',
   views: {
     main: yeoman.app + '/index.html',
-    files: [yeoman.app + '/views/**/*.html']
+    files: [yeoman.app + '/*[!lib]*/views/*.html']
   }
 };
 
@@ -158,14 +158,14 @@ gulp.task('clean:dist', function (cb) {
 });
 
 gulp.task('client:build', ['html', 'styles'], function () {
-  var jsFilter = $.filter('**/*.js');
+  var jsFilter = $.filter('**/*.js','*[!lib]*/**/.js');
   var cssFilter = $.filter('**/*.css');
 
   return gulp.src(paths.views.main)
     .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
-    .pipe($.uglify())
+
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.minifyCss({cache: true}))
@@ -198,8 +198,13 @@ gulp.task('copy:fonts', function () {
     .pipe(gulp.dest(yeoman.dist + '/fonts'));
 });
 
+gulp.task('copy:views', function () {
+  return gulp.src(yeoman.app + '/*[!lib]*/views/*')
+    .pipe(gulp.dest(yeoman.dist + '/'));
+});
+
 gulp.task('build', ['clean:dist'], function () {
-  runSequence(['images', 'copy:extras', 'copy:fonts', 'client:build']);
+  runSequence(['images', 'copy:extras', 'copy:fonts','copy:views', 'client:build']);
 });
 
 gulp.task('default', ['serve']);
