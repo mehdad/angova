@@ -1,0 +1,11 @@
+<section data-ng-controller="AdsController" data-ng-init="find()">
+    <h1>Ads</h1>
+    <ul>
+        <li data-ng-repeat="ad in ads">
+            <a data-ng-href="#!/ads/{{ad.id}}" data-ng-bind="ad.title"></a>
+        </li>
+    </ul>
+    <div data-ng-hide="!ads || ads.length">
+        No ads yet.Do you wana <a href="/#!/ads/create">create</a> one?
+    </div>
+</section>

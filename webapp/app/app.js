@@ -15,7 +15,8 @@ angular.module('RS_webApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'users'
+    'users',
+    'ads'
   ])
   .config(function ($routeProvider) {
     $routeProvider
