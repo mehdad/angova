@@ -1,7 +1,7 @@
 "use strict";
 angular.module('ads').config(['$routeProvider', function($routeProvider) {
     $routeProvider
-        .when('/ads',{
+        .when('/',{
             templateUrl: 'ads/views/list-ads.client.view.html'
         });
 }]);
