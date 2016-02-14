@@ -11,9 +11,7 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/menu.min.css">
-    <link rel="stylesheet" href="styles/item.min.css">
-    <link rel="stylesheet" href="styles/button.min.css">
+    <link rel="stylesheet" href="styles/bootstrap.css">
     <!-- endbuild -->
   </head>
   <body ng-app="RS_webApp">
@@ -22,17 +20,61 @@
     <![endif]-->
 
 
-    <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top header">
+        <div class="container-fluid row">
+            <div class="navbar-left">
+                <a class="navbar-brand" href="#">Realestate</a>
+            </div>
+            <form class="col-lg-8 col-md-7 col-sm-6 col-xs-7" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">find!</button>
+                    </span>
+                </div>
+            </form>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Filter <span class="caret"></span></a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div ng-view=""></div>
-    </div>
-
-    <div class="ui bottom fixed menu">
-      <div class="item">
-        <img src="asset/images/logo.png">
-      </div>
-      <a class="item" href="#/">Home</a>
-      <a class="item" ng-href="#/users">account</a>
-    </div>
+    <nav class="navbar-fixed-bottom footer">
+        <ul class="nav nav-tabs nav-justified ">
+            <li class="active">
+                <a href="#">
+                    <div class="center-block">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    </div>
+                    <div class="center-block">Home</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="center-block">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    </div>
+                    <div class="center-block">Account</div>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="center-block">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </div>
+                    <div class="center-block">Setting</div>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -41,7 +83,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
         <script type="text/javascript" src="/lib/angular/angular.js"></script>
         <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
         <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>

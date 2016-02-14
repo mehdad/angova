@@ -1,0 +1,48 @@
+/*******  Header Nav ********/
+.header.navbar.navbar-default form {
+    top: 9px;
+}
+
+.header.navbar-default .container .navbar-brand, .navbar .container-fluid .navbar-brand {
+     margin-left: 0px !important;
+     padding: 15px 0px !important;
+}
+
+.header.navbar-default .dropdown-toggle {
+        padding-left: 0px;
+        padding-top: 7px;
+}
+
+@media (max-width: 767px){
+    .header.navbar-default .navbar-nav .open .dropdown-menu li a {
+        background-color: #e7e7e7;
+    }
+}
+
+.header.navbar-default .nav.navbar-nav {
+    margin-bottom: -5px;
+    padding-right: 5px;
+}
+
+/*******  Footer Nav ********/
+.footer .nav-tabs.nav-justified  li {
+    float: left !important;
+    width: 33% !important;
+}
+
+.footer .nav-tabs.nav-justified li a {
+    border-top: 1px solid #ddd !important;
+    background-color: #F8F8F8 !important;
+}
+
+.footer .nav-tabs.nav-justified li:hover a {
+    background-color: #FFF !important;
+}
+
+/*******  List-Item ********/
+.list-item .panel-body {
+    padding-bottom: 0px !important;
+}
+.list-item .panel-footer{
+    padding: 0 15px 5px 15px!important;
+}

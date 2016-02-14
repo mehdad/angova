@@ -1,27 +1,68 @@
-<section class="ui divided items" data-ng-controller="AdsController" data-ng-init="find()">
-  <div class="item" data-ng-repeat="ad in ads">
-    <div class="image">
-      <img src="asset/images/image.png">
-    </div>
-    <div class="content">
-      <a class="header" data-ng-href="#!/ads/{{ad.id}}" data-ng-bind="ad.title"></a>
-      <div class="meta">
-        <span class="cinema">IFC Cinema</span>
-      </div>
-      <div class="description">
-        <p></p>
-      </div>
-      <div class="extra">
-        <div class="ui right floated primary button">
-          Buy tickets
-          <i class="right chevron icon"></i>
-        </div>
-        <div class="ui label">Limited</div>
-      </div>
+<div class="html ui top attached segment">
+<div class="ui top attached menu">
+<div class="ui dropdown icon item">
+<i class="wrench icon"></i>
+<div class="menu">
+  <div class="item">
+    <i class="dropdown icon"></i>
+    <span class="text">New</span>
+    <div class="menu">
+      <div class="item">Document</div>
+      <div class="item">Image</div>
     </div>
   </div>
+  <div class="item">
+    Open...
+  </div>
+  <div class="item">
+    Save...
+  </div>
+  <div class="item">Edit Permissions</div>
+  <div class="divider"></div>
+  <div class="header">
+    Export
+  </div>
+  <div class="item">
+    Share...
+  </div>
+</div>
+</div>
+<div class="right menu">
+<div class="ui right aligned category search item">
+  <div class="ui transparent icon input">
+    <input class="prompt" type="text" placeholder="Search animals...">
+    <i class="search link icon"></i>
+  </div>
+  <div class="results"></div>
+</div>
+</div>
+</div>
+</div>
 
-  <div data-ng-hide="!ads || ads.length">
-      No ads yet.Do you wana <a href="/#!/ads/create">create</a> one?
-  </div>
+<section class="ui divided items rails" data-ng-controller="AdsController" data-ng-init="find()">
+    <div class="item" data-ng-repeat="ad in ads">
+        <div class="image">
+            <img src="asset/images/image.png">
+        </div>
+        <div class="content">
+            <a class="header" data-ng-href="#!/ads/{{ad.id}}" data-ng-bind="ad.title"></a>
+            <div class="meta">
+                <span class="cinema">IFC Cinema</span>
+            </div>
+            <div class="description">
+                <p></p>
+            </div>
+            <div class="extra">
+                <div class="ui right floated primary button">
+                    Buy tickets
+                    <i class="right chevron icon"></i>
+                </div>
+                <div class="ui label">Limited</div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ng-hide="!ads || ads.length">
+        No ads yet.Do you wana <a href="/#!/ads/create">create</a> one?
+    </div>
 </section>

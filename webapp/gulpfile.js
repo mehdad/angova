@@ -16,7 +16,7 @@ var yeoman = {
 
 var paths = {
   scripts: [yeoman.app + '/*[!lib]*/*/*.js'],
-  styles: [yeoman.app + '/asset/styles/*.css',yeoman.app + '/lib/semantic-ui/dist/components/*.css'],
+  styles: [yeoman.app + '/asset/css/*.css',yeoman.app + '/lib/bootstrap/dist/css/*.css'],
   test: [yeoman.app + '/*[!lib]*/tests/unit/*.js'],
   testRequire: [
     yeoman.app + '/lib/angular/angular.js',
@@ -194,7 +194,7 @@ gulp.task('copy:extras', function () {
 });
 
 gulp.task('copy:fonts', function () {
-  return gulp.src(yeoman.app + '/fonts/**/*')
+  return gulp.src([yeoman.app + '/fonts/**/*',yeoman.app + '/lib/bootstrap/dist/fonts/*.*'])
     .pipe(gulp.dest(yeoman.dist + '/fonts'));
 });
 
