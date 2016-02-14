@@ -15,9 +15,10 @@ var yeoman = {
 };
 
 var paths = {
-  scripts: [yeoman.app + '/*[!lib]*/*/*.js'],
+  scripts: [yeoman.app + '/modules/*/*.js',yeoman.app + '/lib/bootstrap/dist/js/*.js'],
   styles: [yeoman.app + '/asset/css/*.css',yeoman.app + '/lib/bootstrap/dist/css/*.css'],
-  test: [yeoman.app + '/*[!lib]*/tests/unit/*.js'],
+  fonts: [yeoman.app + '/asset/fonts/*.*',yeoman.app + '/lib/bootstrap/dist/fonts/*.*'],
+  test: [yeoman.app + '/modules/**/tests/unit/*.js'],
   testRequire: [
     yeoman.app + '/lib/angular/angular.js',
     yeoman.app + '/lib/angular-mocks/angular-mocks.js',
@@ -28,17 +29,16 @@ var paths = {
     yeoman.app + '/lib/angular-touch/angular-touch.js',
     yeoman.app + '/lib/angular-sanitize/angular-sanitize.js',
     yeoman.app + '/app.js',
-    yeoman.app + '/*[!lib]*/**/*.js',
-    yeoman.app + '/*[!lib]*/**/controller/*.js',
-    yeoman.app + '/*[!lib]*/**/service/*.js',
-    yeoman.app + '/*[!lib]*/**/controller/*.js',
-    yeoman.app + '/*[!lib]*/**/config/*.js',
-    yeoman.app + '/*[!lib]*/tests/unit/*.js'
+    yeoman.app + 'modules/**/*.js',
+    yeoman.app + 'modules/**/controller/*.js',
+    yeoman.app + 'modules/**/service/*.js',
+    yeoman.app + 'modules/**/config/*.js',
+    yeoman.app + 'modules/**/tests/unit/*.js'
   ],
   karma: 'karma.conf.js',
   views: {
-    main: yeoman.app + '/index.html',
-    files: [yeoman.app + '/*[!lib]*/views/*.html']
+    main: yeoman.app + '/views/index.html',
+    files: [yeoman.app + '/modules/**/views/*.*']
   }
 };
 
@@ -52,8 +52,13 @@ var lintScripts = lazypipe()
 
 var styles = lazypipe()
   .pipe($.autoprefixer, 'last 1 version')
-  .pipe(gulp.dest, '.tmp/styles');
+  .pipe(gulp.dest, '.tmp/asset/styles');
 
+var fonts = lazypipe()
+    .pipe(gulp.dest, '.tmp/asset/fonts');
+
+var views = lazypipe()
+        .pipe(gulp.dest, '.tmp/views');
 ///////////
 // Tasks //
 ///////////
@@ -61,6 +66,16 @@ var styles = lazypipe()
 gulp.task('styles', function () {
   return gulp.src(paths.styles)
     .pipe(styles());
+});
+
+gulp.task('fonts', function () {
+  return gulp.src(paths.fonts)
+    .pipe(fonts());
+});
+
+gulp.task('views', function () {
+  return gulp.src(paths.views.files)
+    .pipe(views());
 });
 
 gulp.task('lint:scripts', function () {
@@ -72,7 +87,7 @@ gulp.task('clean:tmp', function (cb) {
   rimraf('./.tmp', cb);
 });
 
-gulp.task('start:client', ['start:server', 'styles'], function () {
+gulp.task('start:client', ['start:server', 'styles','fonts','views'], function () {
   openURL('http://localhost:9000');
 });
 
@@ -97,6 +112,16 @@ gulp.task('watch', function () {
   $.watch(paths.styles)
     .pipe($.plumber())
     .pipe(styles())
+    .pipe($.connect.reload());
+
+  $.watch(paths.fonts)
+    .pipe($.plumber())
+    .pipe(fonts())
+    .pipe($.connect.reload());
+
+  $.watch(paths.views.files)
+    .pipe($.plumber())
+    .pipe(views())
     .pipe($.connect.reload());
 
   $.watch(paths.views.files)
@@ -157,12 +182,12 @@ gulp.task('clean:dist', function (cb) {
   rimraf('../www', cb);
 });
 
-gulp.task('client:build', ['html', 'styles'], function () {
-  var jsFilter = $.filter('**/*.js','*[!lib]*/**/.js');
-  var cssFilter = $.filter('**/*.css');
+gulp.task('client:build', ['html', 'styles','fonts','views'], function () {
+  var jsFilter = $.filter(['**/*.js','modules/**/.js']);
+  var cssFilter = $.filter('asset/**/*.css');
 
   return gulp.src(paths.views.main)
-    .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))
+    .pipe($.useref({searchPath: [yeoman.app, '.tmp/asset/']}))
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
 
@@ -174,18 +199,18 @@ gulp.task('client:build', ['html', 'styles'], function () {
 });
 
 gulp.task('html', function () {
-  return gulp.src(yeoman.app + '/views/**/*')
+  return gulp.src(yeoman.app + '/views/*')
     .pipe(gulp.dest(yeoman.dist + '/views'));
 });
 
 gulp.task('images', function () {
-  return gulp.src(yeoman.app + '/images/**/*')
+  return gulp.src(yeoman.app + '/asset/images/**/*')
     .pipe($.cache($.imagemin({
         optimizationLevel: 5,
         progressive: true,
         interlaced: true
     })))
-    .pipe(gulp.dest(yeoman.dist + '/images'));
+    .pipe(gulp.dest(yeoman.dist + '/asset/images'));
 });
 
 gulp.task('copy:extras', function () {
@@ -199,12 +224,17 @@ gulp.task('copy:fonts', function () {
 });
 
 gulp.task('copy:views', function () {
-  return gulp.src(yeoman.app + '/*[!lib]*/views/*')
-    .pipe(gulp.dest(yeoman.dist + '/'));
+  return gulp.src(yeoman.app + '/modules/**/views/*')
+    .pipe(gulp.dest(yeoman.dist + '/views'));
 });
 
+/*gulp.task('copy:views', function () {
+  return gulp.src(yeoman.app + '/modules/**/views/*.*')
+    .pipe(gulp.dest(yeoman.dist + '/'));
+});*/
+
 gulp.task('build', ['clean:dist'], function () {
-  runSequence(['images', 'copy:extras', 'copy:fonts','copy:views', 'client:build']);
+  runSequence(['images', 'copy:extras', 'copy:views', 'client:build']);
 });
 
 gulp.task('default', ['serve']);
