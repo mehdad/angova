@@ -47,11 +47,19 @@
             </ul>
         </div>
     </nav>
-    <div ng-view=""></div>
+    <div ng-view="" class="app-container"></div>
     <nav class="navbar-fixed-bottom footer">
         <ul class="nav nav-tabs nav-justified ">
+            <li>
+                <a href="#/users">
+                    <div class="center-block">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    </div>
+                    <div class="center-block">Account</div>
+                </a>
+            </li>
             <li class="active">
-                <a href="#">
+                <a href="#/">
                     <div class="center-block">
                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                     </div>
@@ -59,19 +67,11 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#/ad/create">
                     <div class="center-block">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
                     </div>
-                    <div class="center-block">Account</div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="center-block">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </div>
-                    <div class="center-block">Setting</div>
+                    <div class="center-block">Add</div>
                 </a>
             </li>
         </ul>
