@@ -46,3 +46,7 @@
 .list-item .panel-footer{
     padding: 0 15px 5px 15px!important;
 }
+
+.app-container {
+    padding: 50px 0px;
+}
