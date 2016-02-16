@@ -15,7 +15,7 @@ angular.module('RS_webApp', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'users',
+    'account',
     'ads'
 ]);
 

@@ -1,15 +1,15 @@
-angular.module('users').controller('UserController', ['$scope','$location','User',function ($scope,$location,User) {
+angular.module('account').controller('AccountController', ['$scope','$location','Account',function ($scope,$location,Account) {
 "use strict";
     $scope.find = function() {
-        $scope.users = User.query();
+        $scope.accounts = Account.query();
     };
 
     $scope.create = function (){
-        var user = new User({
+        var account = new Account({
             name: this.name,
             uniqueid: this.uniqueid
         });
-        user.$save(function(response){
+        account.$save(function(response){
             $location.path('user/'+response._id);
         },function(errorResponse){
             $scope.error = errorResponse.data.message;
