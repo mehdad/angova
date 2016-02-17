@@ -1,6 +1,6 @@
 <section data-ng-controller="AccountController">
-	<h1>New Account</h1>
-		<form class="col-md-12" data-ng-submit="create()" novalidate>
+	<h1>Login Account</h1>
+		<form class="col-md-12" data-ng-submit="login()" novalidate>
 			<div class="form-group">
 				<input type="text" class="form-control input-lg" data-ng-model="name" placeholder="Email">
 			</div>
@@ -8,12 +8,9 @@
 				<input type="password" class="form-control input-lg" data-ng-model="uniqueid" placeholder="Password">
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control input-lg" placeholder="Confirm Password">
-			</div>
-			<div class="form-group">
-				<button class="btn btn-primary btn-lg btn-block">Sign Up</button>
+				<button class="btn btn-primary btn-lg btn-block">Sign In</button>
 				<span><a href="#">Need help?</a></span>
-				<span class="pull-right"><a href="#/account/login">Have an account?</a></span>
+				<span class="pull-right"><a href="#/account/create">New Registration</a></span>
 			</div>
 			<div data-ng-show="error">
 				<strong data-ng-bind="error"></strong>
