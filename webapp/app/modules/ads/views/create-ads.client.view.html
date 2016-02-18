@@ -1,4 +1,4 @@
-<form class="create-ad">
+<form class="create-ad" data-ng-controller="AdsController" >
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
@@ -42,13 +42,18 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <select class="form-control" id="type">
+                <select class="form-control type" id="type" ng-model="Ad-Type">
                   <option value="1">Sell</option>
                   <option value="2">Rent</option>
                   <option value="3">Mortgage</option>
                 </select>
-
+ <h1>Hello {{Ad-Type}}!</h1>
               <div class="form-group">
+                <ANY ng-switch="{Ad-Type}">
+                    <ANY ng-switch-when="matchValue1">...</ANY>
+                    <ANY ng-switch-when="matchValue2">...</ANY>
+                    <ANY ng-switch-default>...</ANY>
+                </ANY>
                   <input type="text" id="price" class="form-control" placeholder="Price">
                   <input type="text" id="rent-p" class="form-control hide" placeholder="Rent-p">
                   <input type="text" id="rent-m" class="form-control hide" placeholder="Rent-m">
