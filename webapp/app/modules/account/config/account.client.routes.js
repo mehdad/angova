@@ -6,5 +6,11 @@ angular.module('account').config(['$routeProvider', function($routeProvider) {
     })
     .when('/account/login',{
         templateUrl: 'modules/account/views/login-account.client.view.html'
+    })
+    .when('/account/info',{
+        templateUrl: 'modules/account/views/info-account.client.view.html'
+    })
+    .when('/account/edit',{
+        templateUrl: 'modules/account/views/edit-account.client.view.html'
     });
 }]);
