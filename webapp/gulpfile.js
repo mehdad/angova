@@ -15,7 +15,7 @@ var yeoman = {
 };
 
 var paths = {
-  scripts: [yeoman.app + '/modules/**/*.js',yeoman.app + '/modules/**/**/*.js'],
+  scripts: [yeoman.app + '/modules/**/*.js',yeoman.app + '/modules/**/**/*.js',yeoman.app + '/asset/js/*.js'],
   styles: [yeoman.app + '/asset/css/*.css',yeoman.app +'/lib/bootstrap/dist/css/*.css'],
   fonts: [yeoman.app + '/asset/fonts/*.*',yeoman.app +'/lib/bootstrap/dist/fonts/*.*'],
   test: [yeoman.app + '/*[!lib]*/tests/unit/*.js'],
@@ -173,8 +173,7 @@ gulp.task('client:build', ['html', 'styles'], function () {
   return gulp.src(paths.views.main)
     .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))
     .pipe(jsFilter)
-    .pipe($.ngAnnotate())
-    .pipe($.uglify())
+    
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     /*.pipe($.minifyCss({cache: true}))*/
