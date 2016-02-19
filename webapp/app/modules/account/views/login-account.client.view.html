@@ -1,11 +1,11 @@
-<section data-ng-controller="AccountController">
+<section data-ng-controller="AccountController" data-ng-init="authenticate('login')">
 	<h1>Login Account</h1>
 		<form class="col-md-12" data-ng-submit="login()" novalidate>
 			<div class="form-group">
-				<input type="text" class="form-control input-lg" data-ng-model="name" placeholder="Email">
+				<input type="text" class="form-control input-lg" data-ng-model="uniqueid" placeholder="Email">
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control input-lg" data-ng-model="uniqueid" placeholder="Password">
+				<input type="password" class="form-control input-lg" data-ng-model="password" placeholder="Password">
 			</div>
 			<div class="form-group">
 				<button class="btn btn-primary btn-lg btn-block">Sign In</button>
