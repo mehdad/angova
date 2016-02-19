@@ -12,7 +12,7 @@ angular.module('account').controller('AccountController', ['$scope','$location',
         account.$save(function(response){
             $location.path('user/'+response._id);
         },function(errorResponse){
-            $scope.error = errorResponse.data.message;
+            $scope.error = window.user.uniqueid;
         });
     };
 }]);
