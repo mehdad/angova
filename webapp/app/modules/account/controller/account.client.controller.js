@@ -1,6 +1,6 @@
 angular.module('account').controller('AccountController', ['$scope','$location','Account','Authentication',function ($scope,$location,Account,Authentication) {
 "use strict";
-    $scope.authentication = Authentication;
+    $scope.user = Authentication.user;
 
     $scope.authenticate = function(permission) {
         if(Authentication.user != null){
@@ -13,7 +13,7 @@ angular.module('account').controller('AccountController', ['$scope','$location',
     };
 
     $scope.login = function() {
-        var account = Account.query({ where: { name: this.uniqueid , password: this.password }});
+        var account = Account.query({ where: { name: this.uniqueid , password: this.password } });
 
         account.$promise.then(function(data) {
             if(data.length < 1){

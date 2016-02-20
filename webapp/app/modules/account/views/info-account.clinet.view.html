@@ -12,14 +12,18 @@
                     </a>
                 </div>
                 <div class="col-xs-8 col-md-10">
-                    <h3>Mehrdad Mohammadi</h3>
-                    <h4>m.mohamadi313@gmail.com</h4>
+                    <h3>Hi {{user.name}}</h3>
+                    <h4>{{user.uniqueid}}</h4>
                 </div>
             </div>
         </div>
         <div class="panel-body">
             <h2>Username</h2>
-            <h3>@mehdad</h3>
+            <input ng-model="user.uniqueid" type="email" required="cant be null" ng-required="true" ng-minlength="7" ng-trim="true"/>
+        </div>
+        <div class="panel-body">
+            <h2>Password</h2>
+            <input ng-model="user.password" type="password" required="cant be null" ng-required="true" ng-minlength="7" ng-trim="true"/>
         </div>
     </div>
 </section>
