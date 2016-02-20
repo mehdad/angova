@@ -42,33 +42,35 @@
         </div>
         <div class="panel-body">
             <div class="form-group">
-                <select class="form-control type" id="type" ng-model="Ad-Type">
+                <select class="form-control type" id="type" ng-model="data.Type" ng-init="data.Type='1'">
                   <option value="1">Sell</option>
                   <option value="2">Rent</option>
                   <option value="3">Mortgage</option>
                 </select>
- <h1>Hello {{Ad-Type}}!</h1>
-              <div class="form-group">
-                <ANY ng-switch="{Ad-Type}">
-                    <ANY ng-switch-when="matchValue1">...</ANY>
-                    <ANY ng-switch-when="matchValue2">...</ANY>
-                    <ANY ng-switch-default>...</ANY>
-                </ANY>
-                  <input type="text" id="price" class="form-control" placeholder="Price">
-                  <input type="text" id="rent-p" class="form-control hide" placeholder="Rent-p">
-                  <input type="text" id="rent-m" class="form-control hide" placeholder="Rent-m">
-                  <input type="text" id="mortgage" class="form-control hide" placeholder="Mortgage">
-              </div>
             </div>
-
+            <div class="form-group">
+                <div ng-switch="data.Type">
+                    <div ng-switch-when="1">
+                        <input type="text" id="price" class="form-control" placeholder="Price">
+                    </div>
+                    <div ng-switch-when="2">
+                        <input type="text" id="rent-p" class="form-control" placeholder="Rent-p">
+                        <input type="text" id="rent-m" class="form-control" placeholder="Rent-m">
+                    </div>
+                    <div ng-switch-when="3">
+                        <input type="text" id="mortgage" class="form-control" placeholder="Mortgage">
+                    </div>
+                </div>
+            </div>
                 <div class="form-group">
-                    <label for="bedno">Bed Number</label>
+                    <label for="bedno">Rooms</label>
                     <select class="form-control" id="bedno">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">More Than 5</option>
                     </select>
                 </div>
                 <div class="form-group">
