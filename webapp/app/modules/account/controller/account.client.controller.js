@@ -25,6 +25,11 @@ angular.module('account').controller('AccountController', ['$scope','$location',
         });
     }
 
+    $scope.logout = function () {
+        Authentication.user = null;
+        $location.path('/account/login');
+    }
+
     $scope.create = function (){
         var account = new Account({
             name: this.name,
