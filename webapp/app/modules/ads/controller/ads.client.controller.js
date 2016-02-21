@@ -4,4 +4,8 @@ angular.module('ads').controller('AdsController', ['$scope','Ads','AdsConfig','A
     $scope.find = function() {
         $scope.ads = Ads.query({limit:AdsConfig.adsPerPage});
     };
+
+    $scope.create = function () {
+        var ad = new Ads({});
+    }
 }]);
