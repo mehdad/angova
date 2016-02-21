@@ -1,25 +1,43 @@
-<div class="container-fluid">
-    <div class="panel panel-default item">
-        <div class="panel-body">
-            <a href="#" class="thumbnail">
-              <img src="asset/images/house1.jpg" alt="house1">
-            </a>
-            <h4 class="title">New House For sale</h4>
-            <h5 class="description">New House DescriptionNew House DescriptionNew House DescriptionNew House DescriptionNew House DescriptionNew House DescriptionNew House DescriptionNew House DescriptionNew House DescriptionNew House DescriptionNew House Description</h5>
-        </div>
-        <div class="panel-footer">
-            <h3>
-                Sale: <span class="label label-success">36,667,000$</span>
-            </h3>
-            <h3>
-                Regin: <span class="label label-info">Regin 67</span>
-            </h3>
+<section data-ng-controller="AdsController" ng-init="findOne(5)">
 
-            <h4>
-                <span class="glyphicon glyphicon glyphicon-bed" aria-hidden="true"></span> 2 Beds
-            </h4>
-            <button type="submit" class="btn btn-success">Get Contact Info</button>
-        </div>
+    <div class="container-fluid">
+        <div class="panel panel-default item">
+            <div class="panel-body">
+                <a href="#" class="thumbnail">
+                  <img src="asset/images/house1.jpg" alt="house1">
+                </a>
+                <h4 class="title">{{ad.title}}</h4>
+                <h5 class="description">{{ad.description}}</h5>
+            </div>
+            <div class="panel-footer">
+                <div ng-switch="ad.type">
+                    <div ng-switch-when=1>
+                        <h3>
+                            Sale: <span class="label label-success">{{ad.price}}</span>
+                        </h3>
+                    </div>
+                    <div ng-switch-when=2>
+                        <h3>
+                            rent: <span class="label label-success">{{ad.lease}}</span>
+                        </h3>
+                    </div>
+                    <div ng-switch-when=3>
+                        <h3>
+                            mortgage: <span class="label label-success">{{ad.mortgage}}</span>
+                        </h3>
+                    </div>
+                </div>
 
+                <h3>
+                    Regin: <span class="label label-info">{{ad.address}}</span>
+                </h3>
+
+                <h4>
+                    <span class="glyphicon glyphicon glyphicon-room" aria-hidden="true"></span> 2 room
+                </h4>
+                <button type="submit" class="btn btn-success">Get Contact Info</button>
+            </div>
+
+        </div>
     </div>
-</div>
+</section>
