@@ -173,10 +173,11 @@ gulp.task('client:build', ['html', 'styles'], function () {
   return gulp.src(paths.views.main)
     .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))
     .pipe(jsFilter)
-    
+    .pipe($.ngAnnotate())
+    .pipe($.uglify())
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    /*.pipe($.minifyCss({cache: true}))*/
+    .pipe($.minifyCss({cache: true}))
     .pipe(cssFilter.restore())
     .pipe(gulp.dest(yeoman.dist));
 });
